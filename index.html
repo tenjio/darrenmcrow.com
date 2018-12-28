@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width = device-width, initial-scale = 1">
+    <meta name="description" content="Official Darren M Crow webpage. Includes Budget Forecaster application.">
+    <meta name="keywords" content="Darren,Crow,Darren M Crow,DarrenMCrow,darrenmcrow,darrenmcrow.com,Fort Wayne,Indiana,Budget Forecaster">
+    <title>Darren M Crow</title>
+    <link href="content/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="content/css/styles.css" rel="stylesheet" type="text/css"/>
+    <script src="app\lib\angular.js"></script>
+    <script src="app\lib\angular-animate.js"></script>
+    <script src="app\app.js"></script>
+  </head>
+  <body ng-app="myAngularApp" ng-controller="Controller">
+      <button id="HomeButton" type="button" name="HomeButton" ng-click="ActiveButton='HomeButton'">Home</button>
+      <button id="AboutMeButton" type="button" name="AboutMeButton" ng-click="ActiveButton='AboutMeButton'">About Me</button>
+      <div class="dropdown">
+        <button id="CalculatorsButton" class="naviButton" type="button" name="CalculatorsButton" ng-click="ActiveButton='CalculatorsButton'">Calculators</button>
+        <div class="dropdown-content">
+          <a ng-click="ActiveButton='BudgetForecaster'">Budget Forecaster</a>
+        </div>
+      </div>
+    <div id="SecondDiv" align="center">
+      <div ng-include="'AboutMe.html'"></div>
+      <div id="HomepageQuote" ng-hide="ActiveButton!='HomeButton' || quoteHide">
+      {{currentQuote.text}}
+      <p id="AuthorName" align="left">{{currentQuote.author}}</p>
+      </div>
+      <div ng-include="'BudgetForecaster.html'" ng-hide="ActiveButton!='BudgetForecaster' && ActiveButton!='CalculatorsButton'">
+      </div>
+    </div>
+  </body>
+</html>

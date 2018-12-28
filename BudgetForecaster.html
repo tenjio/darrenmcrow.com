@@ -1,0 +1,83 @@
+<div ng-app="myAngularApp" ng-controller="Controller" class="container-fluid BudgetForecaster" align="left">
+  <div class="row">
+    <div class=".col-md-4 IncomeBillManager">
+      <span style="font-weight: bold; font-size: 18px;color: lightgray;">Budget Forecaster</span>
+      <p id="Instructions">
+        Instructions:
+        <br>Enter all your income sources in the Paycheck Manager.
+        <br>Enter all your regularly scheduled bills in the Bill Manager.
+        <br>Enter your periodic Spending Money amount to be taken out of each cycle along with bills.
+        <br>Enter your aproximate bank account balance before your next paycheck.
+      </p>
+      <br>Paycheck Manager
+      <ul class="container list-group" ng-view>
+        <li id="PaycheckListItem" class="list-group-item" style="margin: 0px;" ng-repeat="paycheck in paychecks">
+          <button id="removePaycheckButton" class="btn btn-danger" type="button" name="removePaycheckButton" ng-click="removePaycheck(paycheck)">X</button>
+          <button id="paycheckEditButton" class="btn btn-info" ng-click="editPaycheck(paycheck)">Edit</button>
+          <span id="paycheckName">{{paycheck.name}}</span>
+          <span id="paycheckAmount">{{paycheck.amount | currency }}</span>
+          <br><span id="paycheckFrequency">{{paycheck.frequency}}</span>
+          <span id="paycheckNextPayDate">{{paycheck.nextPayDate.toLocaleDateString()}}</span>
+        </li>
+      </ul>
+      <form name="AddPaycheck" ng-submit="addPaycheck()" novalidate>
+        <input type="text" name="paycheckName" maxlength="15" placeholder="Paycheck Name" ng-model="newPaycheck.name" ng-required="true">
+        <br><input type="number" name="paycheckAmount" placeholder="Amount in $" ng-model="newPaycheck.amount" ng-required="true">
+        <br>Frequency: <select name="paycheckFrequency" ng-model="newPaycheck.frequency" ng-required="true">
+              <option value="Weekly">Weekly</option>
+              <option value="Bi-Weekly">Bi-Weekly</option>
+              <option value="Semi-Monthly">Semi-Monthly</option>
+              <option value="Monthly">Monthly</option>
+            </select>
+        <br>Next pay date: <input type="date" name="paycheckNextPayDate" value="2019-01-01" ng-model="newPaycheck.nextPayDate" ng-required="true">
+        <br><input class="btn btn-secondary" type="submit" value="Add new Paycheck" ng-disabled="AddPaycheck.$invalid">
+      </form>
+      <br><br>Bill Manager
+      <ul class="container list-group" ng-view>
+        <li id="BillListItem" class="list-group-item" style="margin: 0px;" ng-repeat="bill in bills">
+          <button class="btn btn-danger" id="removeBillButton" type="button" name="removeBillButton" ng-click="removeBill(bill)" style="float: right;">X</button>
+          <button id="billEditButton" class="btn btn-info" ng-click="editBill(bill)">Edit</button>
+          <span id="billName">{{bill.name}}</span>
+          <span id="billAmount">{{bill.amount | currency }}</span>
+          <br><span id="billFrequency">{{bill.frequency}}</span>
+          <span id="billNextDueDate">{{bill.nextDueDate.toLocaleDateString()}}</span>
+        </li>
+      </ul>
+      <form name="AddBill" ng-submit="addBill()" novalidate>
+        <input type="text" name="billName" maxlength="15" placeholder="Bill Name" ng-model="newBill.name" ng-required="true">
+        <br><input type="number" name="billAmount" placeholder="Amount in $" ng-model="newBill.amount" ng-required="true">
+        <br>Frequency: <select name="billFrequency" ng-model="newBill.frequency" ng-required="true">
+              <option value="Weekly">Weekly</option>
+              <option value="Bi-Weekly">Bi-Weekly</option>
+              <option value="Monthly">Monthly</option>
+            </select>
+        <br>Next due date: <input type="date" name="billNextDueDate" ng-model="newBill.nextDueDate" ng-required="true">
+        <br><input class="btn btn-secondary" type="submit" value="Add new Bill" ng-disabled="AddBill.$invalid">
+      </form>
+      <form name="ForecastNextYear" ng-submit="forecastNextYear()" novalidate>
+        <br>Spending Money: <input type="number" name="spendingMoney" placeholder="Enter amount $" ng-model="spendingMoney.amount" ng-required="true">
+        <br>Starting Balance: <input type="number" name="startingBalance" placeholder="Enter amount $" ng-model="startingBalance.amount" ng-required="true">
+        <br><input class="btn btn-primary" type="submit" value="Forecast Year" ng-disabled="ForecastNextYear.$invalid" style="float: right; margin: 5px">
+      </form>
+      <button class="btn btn-info" ng-click="downloadCSV()" ng-disabled="nextYearForecast.length == 0" style="float: right; margin: 5px;">Download CSV</button>
+    </div>
+    <div id="BudgetForecasterTableView" class=".col-md-8">
+      <table class="table table-bordered table-striped table-hover">
+        <tr>
+          <th>Name</th>
+          <th>Period Start Date</th>
+          <th>Period Starting Balance</th>
+          <th>Period Ending Balance</th>
+          <th>Deductions</th>
+        </tr>
+        <tr ng-repeat="period in nextYearForecast">
+          <th>{{period.name}}</th>
+          <th>{{period.startDate.toLocaleDateString()}}</th>
+          <th>{{period.startBalance | currency}}</th>
+          <th>{{period.endBalance | currency}}</th>
+          <th>{{period.deductions}}</th>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

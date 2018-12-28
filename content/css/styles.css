@@ -1,0 +1,294 @@
+body{
+  background-color: white;
+  font-family: Helvetica;
+  margin: 0;
+}
+
+input.ng-invalid.ng-touched{
+  border: 2px solid red;
+}
+
+input[disabled="disabled"],button[disabled="disabled"]{
+  cursor: not-allowed;
+}
+
+input[type="date"]{
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  min-height: 2em;
+}
+
+p{
+  margin: 0;
+}
+
+.BudgetForecaster{
+  padding: 15px;
+  height: calc(100vh - 80px);
+  width: 100vw;
+  margin-top: 80px;
+  overflow: auto;
+}
+
+.dropdown {
+  position: absolute;
+  left: 250px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: rgba(0,0,0,0.5);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  top: 52px;
+  border-radius: 5px;
+  color: white;
+}
+
+.dropdown-content a {
+  padding: 10px 14px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: darkgray;
+  color: black;
+  border-radius: 5px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.IncomeBillManager{
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+  border-color: lightgray;
+  border-style: solid;
+  border-radius: 10px;
+  padding: 5px;
+  margin-left: 20px;
+  align: left;
+}
+
+#AboutMeButton{
+  border-radius: 10px;
+  border-color: darkgray;
+  border-width: medium;
+  border-style: solid;
+  height: 50px;
+  width: 120px;
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+  font-size: 15px;
+  text-align: center;
+  vertical-align: middle;
+  padding: 1vw;
+  display: block;
+  position: absolute;
+  left: 120px;
+  transform: translateY(10%);
+  outline: none;
+}
+
+#AboutMeButton:focus{
+  background-color: white;
+  color: black;
+}
+
+#AboutMeButton:hover{
+  background-color: lightgray;
+  color: black;
+}
+
+#AboutMeDiv{
+  background: url("../DSC_0095.JPG");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  transition:all linear 0.5s;
+  overflow: hidden;
+}
+
+#AboutMeText{
+  font-family: Century;
+  font-style: italic;
+  width: 75vw;
+  border-radius: 2vmin;
+  background-color: rgba(0,0,0,0.5);
+  transform: translateY(100px);
+  margin: 0;
+  font-size: 3vmin;
+  color: white;
+  padding: 10px;
+  transition:all linear 0.5s;
+}
+
+#AuthorName{
+  font-size: 3vmin;
+}
+
+#billAmount{
+  color: darkred;
+}
+
+#BudgetForecasterTableView{
+  padding: 5px;
+}
+
+#CalculatorsButton{
+  border-radius: 10px;
+  border-color: darkgray;
+  border-width: medium;
+  border-style: solid;
+  height: 50px;
+  width: 120px;
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+  font-size: 15px;
+  text-align: center;
+  vertical-align: middle;
+  padding: 1vw;
+  display: block;
+  position: absolute;
+  left: 0px;
+  transform: translateY(10%);
+  outline: none;
+}
+
+#CalculatorsButton:focus{
+  background-color: white;
+  color: black;
+}
+
+#CalculatorsButton:hover{
+  background-color: lightgray;
+  color: black;
+}
+
+#HomeButton{
+  border-radius: 10px;
+  border-color: darkgray;
+  border-width: medium;
+  border-style: solid;
+  height: 50px;
+  width: 100px;
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+  font-size: 15px;
+  text-align: center;
+  vertical-align: middle;
+  padding: 1vw;
+  display: block;
+  position: absolute;
+  left: 10px;
+  transform: translateY(10%);
+  outline: none;
+}
+
+#HomeButton:focus{
+  background-color: white;
+  color: black;
+}
+
+#HomeButton:hover{
+  background-color: lightgray;
+  color: black;
+}
+
+#HomepageQuote{
+  font-family: Century;
+  font-style: italic;
+  width: 65vw;
+  height: auto;
+  border-radius: 2vmin;
+  background-color: rgba(0,0,0,0.25);
+  transform: translateY(100px);
+  margin: 0;
+  font-size: 5vmin;
+  color: white;
+  text-shadow: 0 2px 0 black;
+  transition:all linear 0.5s;
+  padding: 1vmin;
+}
+
+#Instructions{
+  font-size: 10px;
+}
+
+#paycheckAmount,#billAmount{
+  font-weight: bold;
+  float: right;
+}
+
+#paycheckAmount{
+  color: green;
+}
+
+#paycheckFrequency,#billFrequency{
+  font-size: 12px;
+  margin-top: 0px;
+  color: darkgray;
+}
+
+#paycheckName,#billName{
+  font-weight: bold;
+  float: left;
+  color: #3f80bf;
+}
+
+#paycheckNextPayDate,#billNextDueDate{
+  float: right;
+  font-size: 12px;
+  color: black;
+}
+
+#paycheckEditButton,#billEditButton{
+  float: right;
+  margin: 5px;
+  margin-top: 0px;
+}
+
+#removePaycheckButton,#removeBillButton{
+  float: right;
+  margin: 5px;
+  margin-top: 0px;
+}
+
+#SecondDiv{
+  background: url("../IMG_1779.JPG");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  overflow: auto;
+}
+
+/*ANIMATIONS*/
+#AboutMeDiv.ng-hide {
+  transition:0.25s linear all;
+  transform: translateX(-100%);
+  opacity:0;
+}
+
+#HomepageQuote.ng-hide {
+  transition:0.4s linear all;
+  opacity:0;
+}
+
+#HomepageQuote.ng-hide-active {
+  opacity:1;
+}
+
+#PaycheckListItem.ng-leave,#BillListItem.ng-leave{
+  transition:0.5s linear all;
+  transform: translateX(0%);
+  opacity:1;
+}
+
+#PaycheckListItem.ng-leave.ng-leave-active,#BillListItem.ng-leave.ng-leave-active {
+  opacity:0;
+  transform: translateX(-100%);
+}
