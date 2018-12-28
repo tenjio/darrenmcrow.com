@@ -13,6 +13,7 @@ myAngularApp.controller('Controller', ['$scope', '$interval', function($scope, $
   $scope.currentQuote = $scope.quotes[$scope.currentQuoteIndex];
 
   var today = new Date();
+  $scope.nextYearForecast = [];
   $scope.paychecks = [
     {name: 'John', amount: 100, frequency: 'Bi-Weekly', nextPayDate: today, nextPayDateForecast: today},
     {name: 'Jane', amount: 200, frequency: 'Weekly', nextPayDate: today, nextPayDateForecast: today}
@@ -21,7 +22,7 @@ myAngularApp.controller('Controller', ['$scope', '$interval', function($scope, $
     {name: 'Electric', frequency: 'Monthly', nextDueDate: today, nextDueDateForecast: today, amount: 100},
     {name: 'Water', frequency: 'Monthly', nextDueDate: today, nextDueDateForecast: today, amount: 25}
   ];
-  $scope.nextYearForecast = [];
+
 
   $interval(
     function(){
